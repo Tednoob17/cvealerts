@@ -3,8 +3,6 @@ use std::env;
 use docx::document::Paragraph;
 use docx::Docx;
 
-
-
 fn search_cves(parameters: &str) -> Result<(), reqwest::Error> {
     let base_url = "https://services.nvd.nist.gov/rest/json/cves/2.0";
     let response = get(&format!("{}?{}", base_url, parameters))?;
@@ -18,7 +16,6 @@ fn search_cves(parameters: &str) -> Result<(), reqwest::Error> {
 
     Ok(())
 }
-
 
 fn main() {
     let args: Vec<String> = env::args().collect();
