@@ -1,5 +1,9 @@
 use reqwest::blocking::get;
 use std::env;
+use docx::document::Paragraph;
+use docx::Docx;
+
+
 
 fn search_cves(parameters: &str) -> Result<(), reqwest::Error> {
     let base_url = "https://services.nvd.nist.gov/rest/json/cves/2.0";
