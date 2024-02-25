@@ -2,8 +2,16 @@ use reqwest::blocking::get;
 use std::env;
 use docx::document::Paragraph;
 use docx::Docx;
+extern crate serde;
+extern crate serde_json;
 
-fn search_cves(parameters: &str) -> Result<(), reqwest::Error> {
+#[derive(Debug, serde::Deserialize)]
+struct {
+
+
+}
+
+fn ft_search_cves(parameters: &str) -> Result<(), reqwest::Error> {
     let base_url = "https://services.nvd.nist.gov/rest/json/cves/2.0";
     let response = get(&format!("{}?{}", base_url, parameters))?;
 
@@ -17,11 +25,20 @@ fn search_cves(parameters: &str) -> Result<(), reqwest::Error> {
     Ok(())
 }
 
+fn save_to_file() {
+
+}
+
 fn main() {
     let args: Vec<String> = env::args().collect();
     let parameters = args[1..].join("&");
 
-    if let Err(e) = search_cves(&parameters) {
+    if let Err(e) = ft_search_cves(&parameters) {
         eprintln!("Erreur : {}", e);
     }
+
+
+
+
+
 }
