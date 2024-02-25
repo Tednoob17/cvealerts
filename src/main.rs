@@ -25,9 +25,6 @@ fn ft_search_cves(parameters: &str) -> Result<(), reqwest::Error> {
     Ok(())
 }
 
-fn save_to_file() {
-
-}
 
 fn main() {
     let args: Vec<String> = env::args().collect();
