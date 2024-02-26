@@ -274,6 +274,7 @@ version = "0.1.0"
 dependencies = [
  "docx",
  "error-chain",
+ "jetscii 0.5.1",
  "reqwest",
  "scraper",
  "serde",
@@ -706,6 +707,12 @@ name = "jetscii"
 version = "0.4.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5f25cca2463cb19dbb1061eb3bd38a8b5e4ce1cc5a5a9fc0e02de486d92b9b05"
+
+[[package]]
+name = "jetscii"
+version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c9447923c57a8a2d5c1b0875cdf96a6324275df728b498f2ede0e5cbde088a15"
 
 [[package]]
 name = "js-sys"
@@ -1434,7 +1441,7 @@ version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "98c54661f58cdd722d87bd1836581aa1f9db078eb83374b2297cf363397e0e7f"
 dependencies = [
- "jetscii",
+ "jetscii 0.4.4",
  "lazy_static",
  "log",
  "memchr",
