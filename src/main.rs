@@ -1,37 +1,20 @@
-use reqwest::blocking::get;
 use std::env;
-use serde_json::Value;
 use std::fs::File;
-use std::io::{Write, Result};
+use std::io::prelude::*;
 
-
-fn ft_search_cves(parameters: &str) -> Result<()> {
-    let base_url = "https://services.nvd.nist.gov/rest/json/cves/2.0";
-    let response = get(&format!("{}?{}", base_url, parameters))?;
-
-    if response.status().is_success() {
-        let json_data: Value = response.json()?;
-        let stdout_content = json_data.to_string();
-
-      //  save_stdout_to_file(&stdout_content)?;
-    } else {
-        eprintln!("Erreur lors de la récupération des données. Code d'état : {}", response.status());
-    }
-
-    Ok(())
-}
-/*
-fn save_stdout_to_file(stdout_content: &str) -> Result<()> {
-    let mut file = File::create("output.txt")?;
-    file.write_all(stdout_content.as_bytes())?;
-    Ok(())
-}
-*/
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let parameters = args[1..].join("&");
+    let query = &args[1];
+    let filename = &args[2];
 
-    if let Err(e) = ft_search_cves(&parameters) {
-        eprintln!("Erreur : {}", e);
-    }
+    println!("Searching for {}", query);
+    println!("In file {}", filename);
+
+    let mut f = File::open(filename).expect("file not found");
+
+    let mut contents = String::new();
+    f.read_to_string(&mut contents)
+        .expect("something went wrong reading the file");
+
+    println!("With text:\n{}", contents);
 }
